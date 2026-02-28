@@ -4,8 +4,8 @@ import { routes } from './routes'
 
 export default function NavigationSidebar() {
   return (
-    <nav className="relative flex h-full flex-col gap-8 border-r border-gray-400 bg-gray-300 text-black">
-      <Link href="/" className="p-6 transition-colors hover:bg-black/5">
+    <nav className="border-sidebar-border bg-sidebar-accent text-sidebar-foreground relative flex h-full flex-col gap-8 border-r">
+      <Link href="/" className="hover:bg-foreground/5 p-6 transition-colors">
         <Logo />
       </Link>
 

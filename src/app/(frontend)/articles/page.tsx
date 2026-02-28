@@ -1,3 +1,4 @@
+import ContentContainer from '@/components/layout/content-container'
 import { Heading } from '@/components/typography/Heading'
 
 export const metadata = {
@@ -6,8 +7,8 @@ export const metadata = {
 
 export default async function ArticlesPage() {
   return (
-    <div className="bg-red-400 p-2">
-      <Heading> Articles </Heading>
-    </div>
+    <ContentContainer>
+      <Heading level={1}> Articles </Heading>
+    </ContentContainer>
   )
 }

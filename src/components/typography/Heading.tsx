@@ -1,4 +1,17 @@
-export function Heading(props: { children: React.ReactNode; level: 1 | 2 | 3 | 4 | 5 | 6 }) {
+import { cn } from '@/lib/utils'
+
+import { Geist_Mono } from 'next/font/google'
+
+const font = Geist_Mono({
+  subsets: ['latin'],
+  display: 'auto',
+})
+
+export function Heading(props: {
+  children: React.ReactNode
+  level: 1 | 2 | 3 | 4 | 5 | 6
+  className: string
+}) {
   const Component = 'h1'
 
   const sizeMap = {
@@ -10,5 +23,10 @@ export function Heading(props: { children: React.ReactNode; level: 1 | 2 | 3 | 4
     h6: 'text-sm',
   }
 
-  return <Component {...props} className={sizeMap[Component]} />
+  return (
+    <Component
+      {...props}
+      className={cn(sizeMap[Component], 'font-black', font.className, props.className)}
+    />
+  )
 }
