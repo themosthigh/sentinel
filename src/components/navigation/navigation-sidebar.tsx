@@ -4,12 +4,10 @@ import { routes } from './routes'
 
 export default function NavigationSidebar() {
   return (
-    <nav className="bg-gray-200 text-black h-full border-r border-gray-300 relative flex flex-col gap-2">
-      <Link href="/" className="px-4 py-2">
+    <nav className="bg-gray-300 text-black h-full border-r border-gray-400 relative flex flex-col gap-8">
+      <Link href="/" className="p-6 hover:bg-black/5 transition-colors">
         <Logo />
       </Link>
-
-      <hr />
 
       <ul className="px-4 py-2 flex flex-col gap-4">
         {routes.map((e) => (

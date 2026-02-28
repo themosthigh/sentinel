@@ -3,5 +3,5 @@ export const metadata = {
 }
 
 export default async function PoetryListPage() {
-  return <div className="p-2 bg-red-400">A bunch of poems</div>
+  return <div className="bg-red-400 p-2">A bunch of poems</div>
 }
