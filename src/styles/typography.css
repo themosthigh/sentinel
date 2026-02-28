@@ -1,13 +1,10 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 :root {
   line-height: 1.6;
 }
 
-
 .prose {
-
   /* prettier-ignore */
   h1, h2, h3, h4, h5, h6 {
     font-family: serif;
@@ -29,8 +26,9 @@
     font-size: var(--text-xl);
   }
 
-  h4,h5,h6 {
+  h4,
+  h5,
+  h6 {
     font-size: var(--text-lg);
   }
-
 }
