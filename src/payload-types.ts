@@ -172,9 +172,32 @@ export interface Media {
 export interface Article {
   id: string;
   title: string;
-  slug?: string | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  /**
+   * The primary image displayed at the top of the article.
+   */
+  image: string | Media;
   author: string | User;
   category?: (string | ArticleCategory)[] | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   content: {
     root: {
       type: string;
@@ -195,9 +218,9 @@ export interface Article {
     description?: string | null;
     image?: (string | null) | Media;
   };
-  status?: ('draft' | 'published') | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -207,8 +230,9 @@ export interface ArticleCategory {
   id: string;
   name: string;
   /**
-   * Used in the URL (e.g., "case-studies")
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
+  generateSlug?: boolean | null;
   slug: string;
   /**
    * Allow for nested sub-categories if needed
@@ -346,9 +370,12 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface ArticlesSelect<T extends boolean = true> {
   title?: T;
+  generateSlug?: T;
   slug?: T;
+  image?: T;
   author?: T;
   category?: T;
+  description?: T;
   content?: T;
   meta?:
     | T
@@ -357,9 +384,9 @@ export interface ArticlesSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
-  status?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -367,6 +394,7 @@ export interface ArticlesSelect<T extends boolean = true> {
  */
 export interface ArticleCategoriesSelect<T extends boolean = true> {
   name?: T;
+  generateSlug?: T;
   slug?: T;
   parent?: T;
   description?: T;

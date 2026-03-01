@@ -1,4 +1,4 @@
-import { Geist, EB_Garamond } from 'next/font/google'
+import { EB_Garamond } from 'next/font/google'
 
 import NavigationSidebar from '@/components/navigation/navigation-sidebar'
 import '@/styles/global.css'
@@ -12,7 +12,7 @@ export const metadata = {
   },
 }
 
-const geist = Geist({
+const font = EB_Garamond({
   subsets: ['latin'],
 })
 
@@ -21,9 +21,14 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body className={cn('flex h-screen w-screen overflow-hidden', geist.className)}>
+      <body
+        className={cn(
+          'flex h-screen w-screen flex-col overflow-hidden font-medium md:flex-row',
+          font.className,
+        )}
+      >
         <NavigationSidebar />
-        <main className="h-full flex-1">{children}</main>
+        <main className="h-full flex-1 overflow-auto">{children}</main>
       </body>
     </html>
   )

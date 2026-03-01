@@ -1,10 +1,13 @@
-import { CollectionConfig } from 'payload'
+import { CollectionConfig, slugField } from 'payload'
 
 const Articles: CollectionConfig = {
   slug: 'articles',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'author', 'category', 'status'],
+  },
+  versions: {
+    drafts: true,
   },
   fields: [
     {
@@ -18,12 +21,16 @@ const Articles: CollectionConfig = {
               type: 'text',
               required: true,
             },
-            {
+            slugField({
               name: 'slug',
-              type: 'text',
-              unique: true,
+            }),
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
               admin: {
-                position: 'sidebar',
+                description: 'The primary image displayed at the top of the article.',
               },
             },
             {
@@ -43,6 +50,10 @@ const Articles: CollectionConfig = {
               admin: {
                 position: 'sidebar',
               },
+            },
+            {
+              name: 'description',
+              type: 'richText',
             },
             {
               name: 'content',
@@ -79,18 +90,6 @@ const Articles: CollectionConfig = {
           ],
         },
       ],
-    },
-    {
-      name: 'status',
-      type: 'select',
-      defaultValue: 'draft',
-      options: [
-        { label: 'Draft', value: 'draft' },
-        { label: 'Published', value: 'published' },
-      ],
-      admin: {
-        position: 'sidebar',
-      },
     },
   ],
 }

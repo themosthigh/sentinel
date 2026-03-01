@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload'
+import { CollectionConfig, slugField } from 'payload'
 
 const ArticleCategories: CollectionConfig = {
   slug: 'article-categories',
@@ -15,15 +15,7 @@ const ArticleCategories: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'slug',
-      type: 'text',
-      unique: true,
-      required: true,
-      admin: {
-        description: 'Used in the URL (e.g., "case-studies")',
-      },
-    },
+    slugField(),
     {
       name: 'parent',
       type: 'relationship',

@@ -4,7 +4,8 @@ type Route = {
 }
 
 export const routes: Route[] = [
+  { label: 'Homepage', uri: '/' },
   { label: 'Articles', uri: '/articles' },
   { label: 'Poetry', uri: '/poems' },
-  { label: 'Stories', uri: '/stories' },
+  // { label: 'Stories', uri: '/stories' },
 ] as const

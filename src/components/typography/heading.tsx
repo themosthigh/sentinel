@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils'
 
-import { Geist_Mono } from 'next/font/google'
+import { Cormorant_Garamond } from 'next/font/google'
 
-const font = Geist_Mono({
+const font = Cormorant_Garamond({
   subsets: ['latin'],
   display: 'auto',
 })
@@ -10,7 +10,7 @@ const font = Geist_Mono({
 export function Heading(props: {
   children: React.ReactNode
   level: 1 | 2 | 3 | 4 | 5 | 6
-  className: string
+  className?: string
 }) {
   const Component = 'h1'
 

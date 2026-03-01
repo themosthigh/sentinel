@@ -1,5 +1,5 @@
 import ContentContainer from '@/components/layout/content-container'
-import { Heading } from '@/components/typography/Heading'
+import { Heading } from '@/components/typography/heading'
 
 export default async function HomePage() {
   return (
